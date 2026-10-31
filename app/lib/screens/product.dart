@@ -22,11 +22,12 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     final state = context.watch<ShopState>();
     final p = state.product(widget.productId);
-    if (p == null)
+    if (p == null) {
       return Scaffold(
         appBar: AppBar(),
         body: const EmptyState(icon: Icons.error_outline, title: 'این محصول دیگر وجود ندارد'),
       );
+    }
     final variants = p.variants;
     final available = p.availableVariants;
     variantId ??= available.isNotEmpty ? available.first.id : null;
@@ -102,7 +103,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
                 decoration: const BoxDecoration(
                   color: Colors.white,
-                  border: Border(top: BorderSide(color: Color(0xFFEFE8D8))),
+                  border: Border(top: BorderSide(color: Color(0xFFDDEBE8))),
                 ),
                 child: Row(
                   children: [
@@ -133,7 +134,7 @@ class _ProductScreenState extends State<ProductScreen> {
         color: selected ? NColors.olive.withValues(alpha: 0.07) : Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14),
-          side: BorderSide(color: selected ? NColors.olive : const Color(0xFFE6DFCD), width: selected ? 1.6 : 1),
+          side: BorderSide(color: selected ? NColors.olive : const Color(0xFFD5E6E3), width: selected ? 1.6 : 1),
         ),
         child: InkWell(
           borderRadius: BorderRadius.circular(14),

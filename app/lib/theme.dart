@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-/// رنگ‌ها از روی لوگوی نارگل
+/// تم سبزآبی ملایم (کم‌کنتراست و آرام برای چشم)
 class NColors {
-  static const olive = Color(0xFF5E5B33);
-  static const oliveDark = Color(0xFF45431F);
-  static const orange = Color(0xFFE8941A);
-  static const brown = Color(0xFF8C6239);
-  static const cream = Color(0xFFFBF6EC);
+  static const olive = Color(0xFF2A7D78);
+  static const oliveDark = Color(0xFF1C5652);
+  static const orange = Color(0xFF37998F);
+  static const brown = Color(0xFF3F6E6A);
+  static const cream = Color(0xFFF1F7F6);
   static const card = Colors.white;
-  static const text = Color(0xFF2F2A1E);
-  static const muted = Color(0xFF7B7464);
+  static const text = Color(0xFF1F302E);
+  static const muted = Color(0xFF66807C);
+  static const warm = Color(0xFFE39A3B); // فقط برای نشان تعداد سبد
   static const danger = Color(0xFFC0392B);
   static const success = Color(0xFF3E8E41);
 }
@@ -56,11 +57,11 @@ ThemeData buildTheme() {
       contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Color(0xFFE3DccB)),
+        borderSide: const BorderSide(color: Color(0xFFD5E6E3)),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Color(0xFFE3DCCB)),
+        borderSide: const BorderSide(color: Color(0xFFD5E6E3)),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
@@ -73,12 +74,12 @@ ThemeData buildTheme() {
       margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: const BorderSide(color: Color(0xFFEFE8D8)),
+        side: const BorderSide(color: Color(0xFFDDEBE8)),
       ),
     ),
     chipTheme: base.chipTheme.copyWith(
       labelStyle: const TextStyle(fontFamily: 'Vazirmatn', fontSize: 13),
-      side: const BorderSide(color: Color(0xFFE3DCCB)),
+      side: const BorderSide(color: Color(0xFFD5E6E3)),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     ),
     snackBarTheme: const SnackBarThemeData(behavior: SnackBarBehavior.floating),

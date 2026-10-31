@@ -18,7 +18,7 @@ class ProductImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget fallback(BuildContext c, Object e, StackTrace? s) => Container(
-      color: const Color(0xFFF1EBDD),
+      color: const Color(0xFFE4EFED),
       alignment: Alignment.center,
       child: const Icon(Icons.image_outlined, color: NColors.muted, size: 36),
     );
@@ -80,7 +80,7 @@ class CartIconButton extends StatelessWidget {
       onPressed: onTap,
       icon: Badge(
         isLabelVisible: n > 0,
-        backgroundColor: NColors.orange,
+        backgroundColor: NColors.warm,
         label: Text(faDigits(n)),
         child: const Icon(Icons.shopping_bag_outlined),
       ),
