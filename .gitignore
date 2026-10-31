@@ -1,0 +1,7 @@
+.DS_Store
+.idea/
+*.iml
+.vscode/
+server/node_modules/
+server/data/
+server/.env

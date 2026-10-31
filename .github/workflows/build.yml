@@ -1,0 +1,57 @@
+# ساخت خودکار نسخه اندروید (APK) و آیفون (بدون امضا) روی سرورهای GitHub
+name: Build apps
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.9'
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      # API_BASE را در Settings > Secrets and variables > Actions > Variables تعریف کنید.
+      # اگر خالی باشد، اپ در حالت نمایشی ساخته می‌شود.
+      - run: flutter build apk --release --dart-define=API_BASE=${{ vars.API_BASE }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nargol-android
+          path: app/build/app/outputs/flutter-apk/app-release.apk
+
+  ios:
+    if: ${{ vars.BUILD_IOS == 'true' }}
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.9'
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: flutter build ipa --release --no-codesign --dart-define=API_BASE=${{ vars.API_BASE }}
+      - run: |
+          mkdir -p Payload
+          cp -r build/ios/archive/Runner.xcarchive/Products/Applications/Runner.app Payload/
+          zip -qr nargol-unsigned.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nargol-ios-unsigned
+          path: app/nargol-unsigned.ipa

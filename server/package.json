@@ -1,0 +1,11 @@
+{
+  "name": "nargol-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "سرور فروشگاه محصولات خانگی نارگل",
+  "main": "server.js",
+  "type": "commonjs",
+  "engines": { "node": ">=22.13" },
+  "scripts": { "start": "node server.js" },
+  "dependencies": { "express": "4.21.2" }
+}
